@@ -34,11 +34,7 @@ chmod 700 Translate.bsh
 
 At this time, the script handles only the following languages:
 
-fr - French
-en - English
-es - Spanish
-it - Italian
-pl - Polish
+French (fr), English (en), Spanish (es), Italian (it), Polish (pl)
 
 AWS Translate supports more languages.  
 <https://docs.aws.amazon.com/translate/latest/dg/what-is.html>
