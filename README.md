@@ -14,6 +14,8 @@ This bash script is using AWS CLI to translate various languages with "AWS Trans
 4. Set Up the AWS Command Line Interface (AWS CLI).  
 <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html>
 
+5. dig must be installed. It is used to check if we have internet access before to communicate with AWS. 
+
 ## Installation
 
 To install this script and get it working, follow the steps below:
@@ -28,7 +30,20 @@ chmod 700 Translate.bsh
 ./Translate.bsh
 ```
 
-## License
+## Supported Languages
+
+At this time, the script handles only the following languages:
+
+  fr - French
+  en - English
+  es - Spanish
+  it - Italian
+  pl - Polish
+
+AWS Translate supports more languages.  
+<https://docs.aws.amazon.com/translate/latest/dg/what-is.html>
+
+# License
 
 This WordPress plugin is licensed under the GPL v2 or later.
 
