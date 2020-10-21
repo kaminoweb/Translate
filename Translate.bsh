@@ -1,0 +1,109 @@
+#!/bin/bash
+#+------------------------------------------------------------------------+
+#+ Name           :   Translate.bsh                                       +
+#+ Description    :   Translate various languages with "AWS translate"    +
+#+                                                                        +
+#+ Author         :   KAMINOWEB                                           +
+#+ www            :   https://kaminoweb.com/                              +
+#+                                                                        +
+#+ Creation       :   16/10/20                                            +
+#+ License        :   GNU General Public License v2.0                     +
+#+------------------------------------------------------------------------+
+
+#set -x  #Debugging
+
+PROG=`basename $0`
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+TODAY="`date +"%d-%m-%Y"` `date +"%H:%M:%S"`"
+TMPFILE=/tmp/${PROG}.$$.txt
+
+#+-Functions--------------------------------------------------------------+
+
+CheckCmd(){
+command -v "${1}" >/dev/null 2>&1
+if [ $? -ne 0 ] ; then
+echo "Command '$1' not found. Return code: 1 :-["
+echo "Exit."
+exit 1
+fi
+}
+
+#+-ENJOY YOUR FLIGHT !!!--------------------------------------------------+
+
+clear
+
+CheckCmd aws ; CheckCmd dig
+
+MYIP=`dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null | awk '{print $1}'`
+if [ -z ${MYIP} ] ; then
+  echo "Access to internet is NOT available. Return code: 1 :-["
+  echo "Exit."
+  exit 1
+fi
+
+echo "---------------------------------------"	
+echo " Translate FROM the following language:"
+echo "---------------------------------------"
+echo "1. fr - French"
+echo "2. en - English"
+echo "3. es - Spanish"
+echo "4. it - Italian"
+echo "5. pl - Polish"
+read -p "Enter choice [ 1 - 5] " CHOICE
+case ${CHOICE} in
+ 1) echo "French"  ; SOURCELANGUAGE="fr" ;;
+ 2) echo "English" ; SOURCELANGUAGE="en" ;;
+ 3) echo "Spanish" ; SOURCELANGUAGE="es" ;;
+ 4) echo "Italian" ; SOURCELANGUAGE="it" ;;
+ 5) echo "Polish"  ; SOURCELANGUAGE="pl" ;;
+ *) echo "Error. Return code: 1 :-[" ; exit 1 ;;
+esac
+unset CHOICE ; clear
+
+echo "-------------------------------------"  
+echo " Translate TO the following language:"
+echo "-------------------------------------"
+echo "1. fr - French"
+echo "2. en - English"
+echo "3. es - Spanish"
+echo "4. it - Italian"
+echo "5. pl - Polish"
+read -p "Enter choice [ 1 - 5] " CHOICE
+case ${CHOICE} in
+ 1) echo "French"  ; TARGETLANGUAGE="fr" ;;
+ 2) echo "English" ; TARGETLANGUAGE="en" ;;
+ 3) echo "Spanish" ; TARGETLANGUAGE="es" ;;
+ 4) echo "Italian" ; TARGETLANGUAGE="it" ;;
+ 5) echo "Polish"  ; TARGETLANGUAGE="pl" ;;
+ *) echo "Error. Return code: 1 :-[" ; exit 1 ;;
+esac
+unset CHOICE ; clear
+
+unset SENTENCE ; SENTENCE="$@"
+echo "--------------------"
+echo "Translate from ${SOURCELANGUAGE} to ${TARGETLANGUAGE}"
+echo "--------------------"
+while :
+do
+ read -p "Translate : " SENTENCE
+ if [ -z "${SENTENCE}" ] ; then
+  echo ""
+  else
+  TRANSLATION=`aws translate translate-text \
+      --source-language-code "${SOURCELANGUAGE}" \
+      --target-language-code "${TARGETLANGUAGE}" \
+      --text "${SENTENCE}" \
+      --output text \
+      | awk -F'\t' '{print $3}'`
+ if [ $? -ne 0 ] ; then
+  echo "            AWS error. Return code: 1 :-["
+  echo "            Exit."
+  exit 1
+ else
+  echo "            ${TRANSLATION}"
+  echo " "
+ fi
+ fi
+done
+
+#+-End of script----------------------------------------------------------+
