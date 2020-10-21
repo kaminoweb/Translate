@@ -32,7 +32,7 @@ fi
 
 clear
 
-CheckCmd aws ; CheckCmd dig
+CheckCmd aws ; CheckCmd dig ; CheckCmd awk
 
 MYIP=`dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null | awk '{print $1}'`
 if [ -z ${MYIP} ] ; then
