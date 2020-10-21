@@ -5,16 +5,13 @@ This bash script is using AWS CLI to translate various languages with "AWS Trans
 ## Requirements
 
 1. Linux operating system.
-2. AWS account. If you don't have one, sign up for AWS. 
-
+2. AWS account. If you don't have one, sign up for AWS.  
 <https://docs.aws.amazon.com/translate/latest/dg/setting-up.html#setting-up-signup>
 
-3. IAM user. If you don't have one, create an IAM user. 
-
+3. IAM user. If you don't have one, create an IAM user.  
 <https://docs.aws.amazon.com/translate/latest/dg/setting-up.html#setting-up-iam>
 
-4. Set Up the AWS Command Line Interface (AWS CLI). 
-
+4. Set Up the AWS Command Line Interface (AWS CLI).  
 <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html>
 
 ## Installation
