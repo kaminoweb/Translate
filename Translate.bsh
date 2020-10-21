@@ -80,9 +80,9 @@ esac
 unset CHOICE ; clear
 
 unset SENTENCE ; SENTENCE="$@"
-echo "--------------------"
+echo "-----------------------"
 echo "Translate from ${SOURCELANGUAGE} to ${TARGETLANGUAGE}"
-echo "--------------------"
+echo "-----------------------"
 while :
 do
  read -p "Translate : " SENTENCE
