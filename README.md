@@ -5,19 +5,26 @@ This bash script is using AWS CLI to translate various languages with "AWS Trans
 ## Requirements
 
 1. Linux operating system.
-2. AWS account. If you don't have one, sign up for AWS. <https://docs.aws.amazon.com/translate/latest/dg/setting-up.html#setting-up-signup>
-3. IAM user. If you don't have one, create an IAM user. <https://docs.aws.amazon.com/translate/latest/dg/setting-up.html#setting-up-iam>
-4. Set Up the AWS Command Line Interface (AWS CLI).     <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html>
+2. AWS account. If you don't have one, sign up for AWS.
+<https://docs.aws.amazon.com/translate/latest/dg/setting-up.html#setting-up-signup>
+3. IAM user. If you don't have one, create an IAM user.
+<https://docs.aws.amazon.com/translate/latest/dg/setting-up.html#setting-up-iam>
+4. Set Up the AWS Command Line Interface (AWS CLI).
+<https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html>
 
 ## Installation
 
 To install this script and get it working, follow the steps below:
 
 1. Download the script 
-```wget https://raw.githubusercontent.com/kaminoweb/Translate/master/Translate.bsh
-chmod 700 Translate.bsh```
+```
+wget https://raw.githubusercontent.com/kaminoweb/Translate/master/Translate.bsh
+chmod 700 Translate.bsh
+```
 2. Run the script
-```./Translate.bsh```
+```
+./Translate.bsh
+```
 
 ## License
 
